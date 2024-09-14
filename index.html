@@ -7055,6 +7055,20 @@
           color: #9d9d9d;
         }
       }
+      .container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
     </style>
   </head>
   <body>
@@ -7139,6 +7153,11 @@
         </div>
         <div class="widget item-absolute  " id="element-3285">
           <div class="contents cropped item-block" data-at="image-cropp"></div>
+        </div>
+        <div class="container">
+          <div class="center">
+            <button>View the Library</button>
+          </div>
         </div>
       </div>
     </div>
