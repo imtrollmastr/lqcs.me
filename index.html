@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lqcs.vercel.app - Create Your Custom Profile</title>
+        <style>
+            h3, p {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>lqcs.me</h3>
+        <p>https://lqcs.vercel.app/<input type="text" id="customURL" placeholder="Enter your custom URL"></p>
+        <p><button id="createProfile">Create Profile</button></p>
 
+        <div id="profilePage" style="display:none;">
+            <h3>Welcome to Your Profile</h3>
+            <p id="profileText"></p>
+        </div>
+        
+        <script>
+            document.getElementById('createProfile').addEventListener('click', function() {
+                // Get the input value
+                const customURL = document.getElementById('customURL').value.trim();
+                
+                // Validate the input
+                if (customURL) {
+                    // Store profile information in localStorage
+                    localStorage.setItem('customProfile', customURL);
+                    
+                    // Display the profile page
+                    document.getElementById('profileText').innerText = `Your profile is https://lqcs.vercel.app/${customURL}`;
+                    document.getElementById('profilePage').style.display = 'block';
+                } else {
+                    alert("Please enter a valid custom URL.");
+                }
+            });
+        </script>
+    </body>
+</html>
