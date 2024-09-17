@@ -1,7 +1,7 @@
 // Predefined list of items with text and links
 const data = [
-    { text: "Liquacious Homepage", url: "https://liquacious.org/" },
-    { text: "Liquacious Newspaper", url: "https://liquacious.org/newspaper" },
+    { text: "Liquacious", url: "https://liquacious.org/" },
+    { text: "Liquacious Newspaper", url: "https://liquacious.org/" },
     { text: "Liquacious Blog", url: "https://liquacious.org/blog" },
     { text: "Liquacious Student Resources", url: "https://liquacious.org/resources" },
     { text: "ISF Grade 5 Advancement Festivities", url: "https://liquacious.org/grade5" },
