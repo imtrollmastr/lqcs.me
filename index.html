@@ -6,30 +6,35 @@
     <meta name="description" content="Make a short link with an expiry date." />
     <link rel="stylesheet" type="text/css" media="screen" href="static/href.css" />
     <script type="text/javascript">
-      const form = document.getElementById("form")
-      const fselect = document.getElementById("fselect")
-      const submit = document.getElementById("submit")
-      const result = document.getElementById("result")
+      function hideURL(event) {
+        event.preventDefault(); // Prevent the form from submitting
 
-      function hideURL() {
-        let string = "https://lqcs.vercel.app/hide?u=" + btoa(fselect.value)
-        result.innerHTML = "<p>Your anonymous link is <a href='" + string + "'>" + string + "</a>"
+        const fselect = document.getElementById("fselect").value;
+        const result = document.getElementById("result");
+        
+        // Generate the hidden URL
+        const string = "https://lqcs.vercel.app/hide?u=" + btoa(fselect);
+        
+        // Display the result as a link
+        result.innerHTML = "<p>Your anonymous link is <a href='" + string + "'>" + string + "</a></p>";
       }
     </script>
   </head>
   <body>
     <div id="wrap">
       <h1>lqcs.me: hide your website</h1>
-      <p>Create an anonymous link that will <em>hide the website</em> URL. </p>
-      <form id="form" title="Make a short URL" action="/">
+      <p>Create an anonymous link that will <em>hide the website</em> URL.</p>
+      
+      <!-- Attach the hideURL function to the form's onsubmit event -->
+      <form id="form" title="Make a short URL" action="/" onsubmit="hideURL(event)">
         <label for="url">Hide the referrer to your URL:</label>
         <br />
-        <input type="text" name="url" id="fselect" class="fselect" size="80" value="http://example.com/"  />
+        <input type="text" name="url" id="fselect" class="fselect" size="80" value="http://example.com/" />
         <br />
-        <input type="submit" name="make" value="Hide your website" title="Click here to make a link that hides your website." id="submit" onclick="hideURL()"/>
+        <input type="submit" name="make" value="Hide your website" title="Click here to make a link that hides your website." id="submit" />
       </form>
-      <div id="result">
-        
-      </div>
+      
+      <div id="result"></div>
+    </div>
   </body>
 </html>
