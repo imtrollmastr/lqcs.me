@@ -21,7 +21,7 @@ body {
     margin: 20px 0;
 }
 
-#searchInput {
+#urlInput {
     width: 300px;
     padding: 10px;
     border: 1px solid #ccc;
