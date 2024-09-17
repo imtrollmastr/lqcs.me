@@ -7,16 +7,26 @@
     <link rel="stylesheet" type="text/css" media="screen" href="static/href.css" />
     <script type="text/javascript">
       function hideURL(event) {
-        event.preventDefault(); // Prevent the form from submitting
-
+        event.preventDefault(); // Prevent form submission
+        
         const fselect = document.getElementById("fselect").value;
+        const password = document.getElementById("password").value;
         const result = document.getElementById("result");
         
-        // Generate the hidden URL
-        const string = "https://lqcs.vercel.app/hide?u=" + btoa(fselect);
-        
-        // Display the result as a link
-        result.innerHTML = "<p>Your anonymous link is <a href='" + string + "'>" + string + "</a></p>";
+        // Ensure both the URL and password are provided
+        if (fselect && password) {
+          // Encode the URL and password in base64
+          const encodedURL = btoa(fselect);
+          const encodedPassword = btoa(password);
+          
+          // Generate the hidden URL with the password included in the query string
+          const string = "https://lqcs.vercel.app/hide?u=" + encodedURL + "&p=" + encodedPassword;
+          
+          // Display the result as a clickable link
+          result.innerHTML = "<p>Your anonymous link is <a href='" + string + "'>" + string + "</a></p>";
+        } else {
+          result.innerHTML = "<p style='color: red;'>Please provide both a URL and a password.</p>";
+        }
       }
     </script>
   </head>
@@ -25,12 +35,18 @@
       <h1>lqcs.me: hide your website</h1>
       <p>Create an anonymous link that will <em>hide the website</em> URL.</p>
       
-      <!-- Attach the hideURL function to the form's onsubmit event -->
+      <!-- Form to generate the hidden link -->
       <form id="form" title="Make a short URL" action="/" onsubmit="hideURL(event)">
         <label for="url">Hide the referrer to your URL:</label>
         <br />
         <input type="text" name="url" id="fselect" class="fselect" size="80" value="http://example.com/" />
+        <br /><br />
+        
+        <label for="password">Enter a password to unlock the hidden page:</label>
         <br />
+        <input type="password" name="password" id="password" class="fselect" size="80" />
+        <br /><br />
+        
         <input type="submit" name="make" value="Hide your website" title="Click here to make a link that hides your website." id="submit" />
       </form>
       
