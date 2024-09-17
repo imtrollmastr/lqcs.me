@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Enter Password to View Hidden Website</title>
+    <script type="text/javascript">
+      // Function to get query string parameters
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Verify the entered password
+      function verifyPassword(event) {
+        event.preventDefault();
+        
+        const userInputPassword = document.getElementById("passwordInput").value;
+        const encodedPassword = getQueryParam("p"); // Get the password from URL
+        
+        if (btoa(userInputPassword) === encodedPassword) {
+          // If passwords match, decode the URL and redirect
+          const encodedURL = getQueryParam("u");
+          const originalURL = atob(encodedURL); // Decode the URL
+          
+          const messageoutput = document.getElementById("showmessage").innerHTML = "<p>Redirecting you to " + originalURL + "</p>"
+          window.location.href = originalURL; // Redirect to the hidden website
+        } else {
+          document.getElementById("result").innerHTML = "<p style='color: red;'>Incorrect password. Please try again.</p>";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Enter Password to Unlock the Hidden Website</h1>
+    
+    <!-- Password form -->
+    <form onsubmit="verifyPassword(event)">
+      <label for="passwordInput">Password:</label>
+      <input type="password" id="passwordInput" />
+      <button type="submit">Submit</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <div id="showmessage"></div>
+  </body>
+</html>
