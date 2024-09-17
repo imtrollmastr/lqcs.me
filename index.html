@@ -13,7 +13,7 @@
 
       function hideURL() {
         let string = "https://lqcs.vercel.app/hide?u=" + btoa(fselect.value)
-        result.innerHTML = "<div id='result'><h2>Your anonymous URL:</h2><input type='text' readonly='readonly' value='" + string + "' size=100 class='fselect' /><p><a href='" + string + "'>" + string +"</a></p><h2>As a HTML link:</h2><input type='text' readonly='readonly' value='&lt;a href=&quot;" + string + "&quot;&gt;lqcs.me&lt;/a&gt;' size=100 class='fselect' /><h2>As a bbCode link:</h2><input type='text' readonly='readonly' value='[url=" + string + "]lqcs.me[/url]' size=100 class='fselect' /><h2>As a Textile link:</h2><input type='text' readonly='readonly' value='&quot;lqcs.me&quot;:" + string + "' size=100 class='fselect' /><h2>As a Markdown link:</h2><input type='text' readonly='readonly' value='[lqcs.me](" + string + ")' size=100 class='fselect' /></div>"
+        result.innerHTML = "<p>Your anonymous link is <a href='" + string + "'>" + string + "</a>"
       }
     </script>
   </head>
@@ -31,8 +31,5 @@
       <div id="result">
         
       </div>
-      <p id="foot">
-        <a href="javascript:Q='';if(document.selection)%20{Q=document.selection.createRange().text;}%20else%20if%20(window.getSelection)%20{Q=window.getSelection();}%20else%20if%20(document.getSelection)%20{Q=window.getSelection();}if%20(Q=='')%20{l=location.href;%20location.href='https://lqcs.vercel.app/?url='+encodeURIComponent(l);}%20else%20{window.open('https://lqcs.vercel.app/?url='+encodeURIComponent(Q)+'');}void(0)">lqcs.vercel.app</a> bookmarklet - drag this link to your Browser toolbar.
-      </p>
   </body>
 </html>
