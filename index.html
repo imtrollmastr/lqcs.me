@@ -1,21 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Search Engine</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <div class="search-container">
-        <h1>lqcs.me</h1>
-        <form class="search-form" id="urlForm" action="/">
-            <input type="text" id="urlInput" placeholder="Enter URL...">
-            <button type="submit" id="hideButton" onclick="hideSubmitValue()">Hide</button>
-        </form>
-        <div id="urlResult" class="results"></div>
-    </div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>lqcs.me: hide your website</title>
+    <meta name="description" content="Make a short link with an expiry date." />
+    <link rel="stylesheet" type="text/css" media="screen" href="static/href.css" />
+    <script type="text/javascript">
+      const form = document.getElementById("form")
+      const fselect = document.getElementById("fselect")
+      const submit = document.getElementById("submit")
+      const result = document.getElementById("result")
 
-    <script src="static/script.js"></script>
-</body>
+      function hideURL() {
+        let string = "https://lqcs.vercel.app/hide?u=" + btoa(fselect.value)
+        result.innerHTML = "<div id='result'><h2>Your anonymous URL:</h2><input type='text' readonly='readonly' value='" + string + "' size=100 class='fselect' /><p><a href='" + string + "'>" + string +"</a></p><h2>As a HTML link:</h2><input type='text' readonly='readonly' value='&lt;a href=&quot;" + string + "&quot;&gt;lqcs.me&lt;/a&gt;' size=100 class='fselect' /><h2>As a bbCode link:</h2><input type='text' readonly='readonly' value='[url=" + string + "]lqcs.me[/url]' size=100 class='fselect' /><h2>As a Textile link:</h2><input type='text' readonly='readonly' value='&quot;lqcs.me&quot;:" + string + "' size=100 class='fselect' /><h2>As a Markdown link:</h2><input type='text' readonly='readonly' value='[lqcs.me](" + string + ")' size=100 class='fselect' /></div>"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="wrap">
+      <h1>lqcs.me: hide your website</h1>
+      <p>Create an anonymous link that will <em>hide the website</em> URL. </p>
+      <form id="form" method="post" title="Make a short URL" action="https://lqcs.vercel.app/">
+        <label for="url">Hide the referrer to your URL:</label>
+        <br />
+        <input type="text" name="url" id="fselect" class="fselect" size="80" value="http://example.com/"  />
+        <br />
+        <input type="submit" name="make" value="Hide your website" title="Click here to make a link that hides your website." id="submit" onclick="hideURL()"/>
+      </form>
+      <div id="result">
+        
+      </div>
+      <p id="foot">
+        <a href="javascript:Q='';if(document.selection)%20{Q=document.selection.createRange().text;}%20else%20if%20(window.getSelection)%20{Q=window.getSelection();}%20else%20if%20(document.getSelection)%20{Q=window.getSelection();}if%20(Q=='')%20{l=location.href;%20location.href='https://lqcs.vercel.app/?url='+encodeURIComponent(l);}%20else%20{window.open('https://lqcs.vercel.app/?url='+encodeURIComponent(Q)+'');}void(0)">lqcs.vercel.app</a> bookmarklet - drag this link to your Browser toolbar.
+      </p>
+  </body>
 </html>
