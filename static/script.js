@@ -1,14 +1,15 @@
-const urlSubmitBox = document.getElementById("urlInput")
-const hideButton = document.getElementById("hideButton")
+const urlSubmitBox = document.getElementById("urlInput");
+const hideButton = document.getElementById("hideButton");
 const resultsContainer = document.getElementById('urlResult');
+const urlForm = document.getElementById("urlForm");
 
 function hideURL(url) {
-    let new_url = "https://lqcs.vercel.app/hide?u=" + url
-    return new_url
+    let new_url = "https://lqcs.vercel.app/hide?u=" + url;
+    return new_url;
 }
 
 function hideSubmitValue() {
-    let hiddenUrl = hideURL(urlSubmitBox.value)
+    let hiddenUrl = hideURL(urlSubmitBox.value);
     const div = document.createElement('div');
     div.classList.add('result-item');
     // Create a clickable link
